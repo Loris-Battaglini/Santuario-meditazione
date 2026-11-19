@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Timer } from "../components/Timer";
 
 const SanctuaryContainer = styled.main`
   display: flex;
@@ -18,7 +19,7 @@ export function Home() {
       <h1>Welcome to the Sanctuary</h1>
       <p>Discover peace and tranquility in our sacred space.</p>
       <div>
-        <button>qui metto il timer</button>
+        <Timer />
       </div>
       <div>
         <h2>rilassati con il tuo audio personalizzato</h2>
