@@ -1,14 +1,23 @@
 import { GlobalStyle } from './style/GlobalStyle';
+import {Navbar} from './components/navbar';
+import {Contact} from './pages/contact';
+import {Practice} from './pages/practice';
+import {Home} from './pages/home';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <h1>Hello World
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem vitae illo esse tenetur a incidunt rem voluptatibus fugiat commodi quo.</p>
-      </h1>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/practice" element={<Practice />} />
+        </Routes>
+      </Router>
     </>
   );
 }
-
 export default App;
