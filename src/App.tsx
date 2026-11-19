@@ -1,8 +1,8 @@
 import { GlobalStyle } from './style/GlobalStyle';
 import {Navbar} from './components/navbar';
-import {Contact} from './pages/contact';
-import {Practice} from './pages/practice';
-import {Home} from './pages/home';
+import {Contact} from './pages/Contact';
+import {Practice} from './pages/Practice';
+import {Home} from './pages/Home';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
