@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Timer } from "../components/Timer";
+import { SoundMixer } from "../components/SoundMixer";
 
 const SanctuaryContainer = styled.main`
   display: flex;
@@ -23,7 +24,7 @@ export function Home() {
       </div>
       <div>
         <h2>rilassati con il tuo audio personalizzato</h2>
-        <button>Ascolta l'audio</button>
+        <SoundMixer />
       </div>
     </SanctuaryContainer>
   );

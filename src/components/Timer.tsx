@@ -35,9 +35,11 @@ export function Timer() {
   const [secondsLeft, setSecondsLeft] = useState(10 * 60);
   const [isRunning, setIsRunning] = useState(false);
 
+  // se l'interruttore è spento (false), fermati subito e non far partire nessun orologio.
   useEffect(() => {
     if (!isRunning) return;
 
+    // Ogni secondo (1000): prende il tempo rimasto (prev) e fa prev - 1. Se è arrivato a 1 (cioè sta per finire), spegne l'interruttore (setIsRunning(false)) e lo porta a 0
     const interval = setInterval(() => {
       setSecondsLeft((prev) => {
         if (prev <= 1) {
@@ -48,6 +50,7 @@ export function Timer() {
       });
     }, 1000);
 
+    // Se metti in pausa o cambi pagina, spegne il vecchio setInterval così non restano due o tre orologi nascosti che corrono insieme.
     return () => clearInterval(interval);
   }, [isRunning]);
 
