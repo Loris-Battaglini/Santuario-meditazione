@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Timer } from "../components/Timer";
 import { SoundMixer } from "../components/SoundMixer";
+import { BreathingCircle } from "../components/BreathingCircle";
 
 const SanctuaryContainer = styled.main`
   display: flex;
@@ -25,6 +26,10 @@ export function Home() {
       <div>
         <h2>rilassati con il tuo audio personalizzato</h2>
         <SoundMixer />
+      </div>
+      <div>
+        <h2>Pratica la respirazione consapevole</h2>
+        <BreathingCircle />
       </div>
     </SanctuaryContainer>
   );

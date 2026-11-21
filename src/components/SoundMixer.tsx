@@ -67,15 +67,17 @@ export function SoundMixer() {
   const audioElementsRef = useRef<{ [key: string]: HTMLAudioElement }>({});
 
   useEffect(() => {
+    const audioElements = audioElementsRef.current;
+
     SOUNDS.forEach((sound) => {
       const audio = new Audio(sound.url);
       audio.loop = true;
       audio.volume = 0;
-      audioElementsRef.current[sound.id] = audio;
+      audioElements[sound.id] = audio;
     });
 
     return () => {
-      Object.values(audioElementsRef.current).forEach((audio) => {
+      Object.values(audioElements).forEach((audio) => {
         audio.pause();
       });
     };
