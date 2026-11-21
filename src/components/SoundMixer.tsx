@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { theme } from "../style/theme";
 import {
@@ -50,15 +50,37 @@ const VolumeSlider = styled.input`
 `;
 
 const SOUNDS = [
-  { id: "rain", title: "Pioggia", icon: <FiCloudRain /> },
-  { id: "wind", title: "Vento", icon: <FiFeather /> },
-  { id: "sun", title: "Sole", icon: <FiSun /> },
-  { id: "bell", title: "Campana", icon: <FiBell /> },
-  { id: "wave", title: "Onde", icon: <FiDroplet /> },
-  { id: "fire", title: "Fuoco", icon: <BsFire /> },
+  {
+    id: "rain",
+    title: "Pioggia",
+    icon: <FiCloudRain />,
+    url: "/sounds/rain.mp3",
+  },
+  { id: "wind", title: "Vento", icon: <FiFeather />, url: "/sounds/wind.mp3" },
+  { id: "sun", title: "Sole", icon: <FiSun />, url: "/sounds/sun.mp3" },
+  { id: "bell", title: "Campana", icon: <FiBell />, url: "/sounds/bell.mp3" },
+  { id: "wave", title: "Onde", icon: <FiDroplet />, url: "/sounds/wave.mp3" },
+  { id: "fire", title: "Fuoco", icon: <BsFire />, url: "/sounds/fire.mp3" },
 ];
 
 export function SoundMixer() {
+  const audioElementsRef = useRef<{ [key: string]: HTMLAudioElement }>({});
+
+  useEffect(() => {
+    SOUNDS.forEach((sound) => {
+      const audio = new Audio(sound.url);
+      audio.loop = true;
+      audio.volume = 0;
+      audioElementsRef.current[sound.id] = audio;
+    });
+
+    return () => {
+      Object.values(audioElementsRef.current).forEach((audio) => {
+        audio.pause();
+      });
+    };
+  }, []);
+
   const [volumes, setVolumes] = useState<{ [key: string]: number }>({
     rain: 0,
     wind: 0,
@@ -73,6 +95,17 @@ export function SoundMixer() {
       ...prev,
       [soundId]: value,
     }));
+
+    const audio = audioElementsRef.current[soundId];
+    if (!audio) return;
+
+    audio.volume = value / 100;
+
+    if (value > 0 && audio.paused) {
+      audio.play().catch(() => {});
+    } else if (value === 0) {
+      audio.pause();
+    }
   }
   return (
     <MixerContainer>
