@@ -1,14 +1,21 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { theme } from "../style/theme";
-import {
-  FiCloudRain,
-  FiFeather,
-  FiSun,
-  FiBell,
-  FiDroplet,
-} from "react-icons/fi";
-import { BsFire } from "react-icons/bs";
+import { FiFeather, FiBell, FiDroplet } from "react-icons/fi";
+import { BsFire, BsCloudLightningRain, BsCloudRain } from "react-icons/bs";
+import { LuTreePine } from "react-icons/lu";
+import { GiStoneBlock } from "react-icons/gi";
+import { PiBirdLight } from "react-icons/pi";
+// suoni freesound
+import fuocoMp3 from "../assets/Freesound/fuoco.mp3";
+import ventoForteForestaAereoMp3 from "../assets/Freesound/ventoForteForestaAereo.mp3";
+import ondaMp3 from "../assets/Freesound/onda.mp3";
+import ciotolaMp3 from "../assets/Freesound/ciotola.mp3";
+import pioggiaCittaMp3 from "../assets/Freesound/pioggiaCitta.mp3";
+import cristalloDiQuarzoMp3 from "../assets/Freesound/cristalloDiQuarzo.mp3";
+import uccelliMp3 from "../assets/Freesound/uccelli.mp3";
+import tuoniPioggiaMp3 from "../assets/Freesound/tuoniPioggia.mp3";
+import grilliMp3 from "../assets/Freesound/grilli.mp3";
 
 const MixerContainer = styled.div`
   display: grid;
@@ -51,16 +58,59 @@ const VolumeSlider = styled.input`
 
 const SOUNDS = [
   {
-    id: "rain",
-    title: "Pioggia",
-    icon: <FiCloudRain />,
-    url: "/sounds/rain.mp3",
+    id: "grilli",
+    title: "Notte",
+    icon: <FiFeather />,
+    url: grilliMp3,
   },
-  { id: "wind", title: "Vento", icon: <FiFeather />, url: "/sounds/wind.mp3" },
-  { id: "sun", title: "Sole", icon: <FiSun />, url: "/sounds/sun.mp3" },
-  { id: "bell", title: "Campana", icon: <FiBell />, url: "/sounds/bell.mp3" },
-  { id: "wave", title: "Onde", icon: <FiDroplet />, url: "/sounds/wave.mp3" },
-  { id: "fire", title: "Fuoco", icon: <BsFire />, url: "/sounds/fire.mp3" },
+  {
+    id: "pioggiaCitta",
+    title: "Pioggia",
+    icon: <BsCloudRain />,
+    url: pioggiaCittaMp3,
+  },
+  {
+    id: "bell",
+    title: "Campana",
+    icon: <FiBell />,
+    url: ciotolaMp3,
+  },
+  {
+    id: "wave",
+    title: "Onde",
+    icon: <FiDroplet />,
+    url: ondaMp3,
+  },
+  {
+    id: "fire",
+    title: "Fuoco",
+    icon: <BsFire />,
+    url: fuocoMp3,
+  },
+  {
+    id: "forest",
+    title: "Vento Foresta",
+    icon: <LuTreePine />,
+    url: ventoForteForestaAereoMp3,
+  },
+  {
+    id: "quarzo",
+    title: "Quarzo",
+    icon: <GiStoneBlock />,
+    url: cristalloDiQuarzoMp3,
+  },
+  {
+    id: "birds",
+    title: "Uccelli",
+    icon: <PiBirdLight />,
+    url: uccelliMp3,
+  },
+  {
+    id: "thunder",
+    title: "Tuoni",
+    icon: <BsCloudLightningRain />,
+    url: tuoniPioggiaMp3,
+  },
 ];
 
 export function SoundMixer() {
@@ -85,11 +135,13 @@ export function SoundMixer() {
 
   const [volumes, setVolumes] = useState<{ [key: string]: number }>({
     rain: 0,
-    wind: 0,
-    sun: 0,
+    grilli: 0,
+    pioggiaCitta: 0,
     bell: 0,
     wave: 0,
     fire: 0,
+    birds: 0,
+    thunder: 0,
   });
 
   function handleVolumeChange(soundId: string, value: number) {
