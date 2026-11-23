@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { theme } from "../style/theme";
-import { FiFeather, FiBell, FiDroplet } from "react-icons/fi";
+import { FiBell, FiDroplet } from "react-icons/fi";
 import { BsFire, BsCloudLightningRain, BsCloudRain } from "react-icons/bs";
 import { LuTreePine } from "react-icons/lu";
 import { GiStoneBlock } from "react-icons/gi";
 import { PiBirdLight } from "react-icons/pi";
+import { FaRegMoon } from "react-icons/fa";
 // suoni freesound
 import fuocoMp3 from "../assets/Freesound/fuoco.mp3";
 import ventoForteForestaAereoMp3 from "../assets/Freesound/ventoForteForestaAereo.mp3";
@@ -16,6 +17,17 @@ import cristalloDiQuarzoMp3 from "../assets/Freesound/cristalloDiQuarzo.mp3";
 import uccelliMp3 from "../assets/Freesound/uccelli.mp3";
 import tuoniPioggiaMp3 from "../assets/Freesound/tuoniPioggia.mp3";
 import grilliMp3 from "../assets/Freesound/grilli.mp3";
+
+interface MasterAudioSettings {
+  masterVolume: number;
+  isMuted: boolean;
+}
+
+declare global {
+  interface Window {
+    __masterAudioSettings?: MasterAudioSettings;
+  }
+}
 
 const MixerContainer = styled.div`
   display: grid;
@@ -60,7 +72,7 @@ const SOUNDS = [
   {
     id: "grilli",
     title: "Notte",
-    icon: <FiFeather />,
+    icon: <FaRegMoon />,
     url: grilliMp3,
   },
   {
@@ -115,6 +127,40 @@ const SOUNDS = [
 
 export function SoundMixer() {
   const audioElementsRef = useRef<{ [key: string]: HTMLAudioElement }>({});
+  const masterAudioSettingsRef = useRef<MasterAudioSettings>(
+    window.__masterAudioSettings ?? { masterVolume: 1, isMuted: false },
+  );
+
+  const [volumes, setVolumes] = useState<{ [key: string]: number }>({
+    grilli: 0,
+    pioggiaCitta: 0,
+    bell: 0,
+    wave: 0,
+    fire: 0,
+    forest: 0,
+    quarzo: 0,
+    birds: 0,
+    thunder: 0,
+  });
+  const volumesRef = useRef(volumes);
+
+  useEffect(() => {
+    const handleMasterAudioChange = (event: Event) => {
+      const { detail } = event as CustomEvent<MasterAudioSettings>;
+      masterAudioSettingsRef.current = detail;
+
+      Object.entries(audioElementsRef.current).forEach(([soundId, audio]) => {
+        const soundVolume = (volumesRef.current[soundId] ?? 0) / 100;
+        audio.volume =
+          soundVolume *
+          (detail.isMuted ? 0 : detail.masterVolume);
+      });
+    };
+
+    window.addEventListener("master-audio-change", handleMasterAudioChange);
+    return () =>
+      window.removeEventListener("master-audio-change", handleMasterAudioChange);
+  }, []);
 
   useEffect(() => {
     const audioElements = audioElementsRef.current;
@@ -122,7 +168,11 @@ export function SoundMixer() {
     SOUNDS.forEach((sound) => {
       const audio = new Audio(sound.url);
       audio.loop = true;
-      audio.volume = 0;
+      audio.volume =
+        (volumesRef.current[sound.id] ?? 0) / 100 *
+        (masterAudioSettingsRef.current.isMuted
+          ? 0
+          : masterAudioSettingsRef.current.masterVolume);
       audioElements[sound.id] = audio;
     });
 
@@ -133,27 +183,22 @@ export function SoundMixer() {
     };
   }, []);
 
-  const [volumes, setVolumes] = useState<{ [key: string]: number }>({
-    rain: 0,
-    grilli: 0,
-    pioggiaCitta: 0,
-    bell: 0,
-    wave: 0,
-    fire: 0,
-    birds: 0,
-    thunder: 0,
-  });
-
   function handleVolumeChange(soundId: string, value: number) {
-    setVolumes((prev) => ({
-      ...prev,
+    const nextVolumes = {
+      ...volumesRef.current,
       [soundId]: value,
-    }));
+    };
+    volumesRef.current = nextVolumes;
+    setVolumes(nextVolumes);
 
     const audio = audioElementsRef.current[soundId];
     if (!audio) return;
 
-    audio.volume = value / 100;
+    audio.volume =
+      (value / 100) *
+      (masterAudioSettingsRef.current.isMuted
+        ? 0
+        : masterAudioSettingsRef.current.masterVolume);
 
     if (value > 0 && audio.paused) {
       audio.play().catch(() => {});
