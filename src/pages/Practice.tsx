@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { PracticeCard } from "../components/PracticeCard";
 import { PracticeViewer } from "../components/PracticeViewer";
-import { practicePoses, type PracticePose } from "../data/practices";
+import { practicePoses, type PracticePose } from "../data/practices.data";
 import { theme } from "../style/theme";
 
 const Page = styled.main`
@@ -64,18 +64,14 @@ export function Practice() {
       <Intro>
         <h1>Pratiche di movimento</h1>
         <p>
-          Scegli una posa per leggere le indicazioni e vedere il video dimostrativo.
-          Procedi con calma e fermati se avverti dolore.
+          Scegli una posa per leggere le indicazioni e vedere il video
+          dimostrativo. Procedi con calma e fermati se avverti dolore.
         </p>
       </Intro>
 
       <PracticeGrid>
         {practicePoses.map((pose) => (
-          <PracticeCard
-            key={pose.id}
-            pose={pose}
-            onSelect={setSelectedPose}
-          />
+          <PracticeCard key={pose.id} pose={pose} onSelect={setSelectedPose} />
         ))}
       </PracticeGrid>
 

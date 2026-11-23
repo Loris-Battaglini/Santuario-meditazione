@@ -38,7 +38,7 @@ export const practicePoses: PracticePose[] = [
       "Rilassa braccia e spalle e mantieni un respiro naturale.",
     ],
     cover: bambino,
-    videoSrc: null,
+    videoSrc: "https://www.pexels.com/it-it/download/video/854129/",
   },
   {
     id: "adho-mukha-svanasana",

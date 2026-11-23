@@ -1,5 +1,7 @@
+import { useRef, useState } from "react";
 import styled from "styled-components";
-import type { PracticePose } from "../data/practices";
+import { FaPlay } from "react-icons/fa";
+import type { PracticePose } from "../data/practices.data";
 import { theme } from "../style/theme";
 
 const Backdrop = styled.div`
@@ -49,6 +51,7 @@ const CloseButton = styled.button`
 `;
 
 const MediaFrame = styled.div`
+  position: relative;
   display: grid;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -61,11 +64,47 @@ const MediaFrame = styled.div`
 `;
 
 const Video = styled.video`
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
   background-color: #000;
+`;
+
+const VideoOverlay = styled.button`
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  color: ${theme.colors.text};
+  background-color: transparent;
+  border: 0;
+  place-items: center;
+
+  &:hover,
+  &:focus-visible {
+    outline: 2px solid ${theme.colors.accent};
+    outline-offset: -2px;
+  }
+`;
+
+const PlayCircle = styled.span`
+  display: grid;
+  width: 4.5rem;
+  height: 4.5rem;
+  background-color: rgba(0, 0, 0, 0.72);
+  border: 2px solid ${theme.colors.accent};
+  border-radius: 50%;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  ${VideoOverlay}:hover &,
+  ${VideoOverlay}:focus-visible & {
+    background-color: ${theme.colors.accent};
+  }
 `;
 
 const Directions = styled.div`
@@ -99,6 +138,17 @@ interface PracticeViewerProps {
 }
 
 export function PracticeViewer({ pose, onClose }: PracticeViewerProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const startVideo = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    setIsPlaying(true);
+    void video.play();
+  };
+
   return (
     <Backdrop
       onMouseDown={(event) => {
@@ -116,10 +166,30 @@ export function PracticeViewer({ pose, onClose }: PracticeViewerProps) {
         <h2 id="practice-dialog-title">{pose.title}</h2>
         <MediaFrame>
           {pose.videoSrc ? (
-            <Video controls playsInline poster={pose.cover}>
-              <source src={pose.videoSrc} type="video/mp4" />
-              Il browser non supporta la riproduzione video.
-            </Video>
+            <>
+              <Video
+                ref={videoRef}
+                controls={isPlaying}
+                playsInline
+                poster={pose.cover}
+                onPause={() => setIsPlaying(false)}
+                onPlay={() => setIsPlaying(true)}
+              >
+                <source src={pose.videoSrc} type="video/mp4" />
+                Il browser non supporta la riproduzione video.
+              </Video>
+              {!isPlaying && (
+                <VideoOverlay
+                  type="button"
+                  aria-label={`Avvia video: ${pose.title}`}
+                  onClick={startVideo}
+                >
+                  <PlayCircle>
+                    <FaPlay size={24} aria-hidden="true" />
+                  </PlayCircle>
+                </VideoOverlay>
+              )}
+            </>
           ) : (
             <p>
               Video locale da aggiungere. Imposta il percorso in{" "}

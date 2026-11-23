@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import type { PracticePose } from "../data/practices";
+import type { PracticePose } from "../data/practices.data";
 import { theme } from "../style/theme";
 
 const CardButton = styled.button`
