@@ -1,3 +1,11 @@
+// immagini pose
+import albero from "../assets/img/yoga-pose/albero.jpg";
+import bambino from "../assets/img/yoga-pose/bambino.jpg";
+import caneATestaInGiu from "../assets/img/yoga-pose/caneATestaInGiu.jpg";
+import guerriero from "../assets/img/yoga-pose/guerriero.jpg";
+import montagna from "../assets/img/yoga-pose/montagna.jpg";
+import rilassamento from "../assets/img/yoga-pose/rilassamentoSavasana.jpg";
+
 export interface PracticePose {
   id: string;
   title: string;
@@ -7,7 +15,6 @@ export interface PracticePose {
   videoSrc: string | null;
 }
 
-// Aggiungi i file in public/media/practice e aggiorna questi percorsi locali.
 export const practicePoses: PracticePose[] = [
   {
     id: "tadasana",
@@ -18,8 +25,8 @@ export const practicePoses: PracticePose[] = [
       "Distribuisci il peso su entrambi i piedi e allunga la schiena.",
       "Lascia le spalle morbide e respira senza forzare.",
     ],
-    cover: "/media/practice/tadasana.jpg",
-    videoSrc: null, // Inserisci qui, ad esempio, "/media/practice/tadasana.mp4".
+    cover: montagna,
+    videoSrc: null,
   },
   {
     id: "balasana",
@@ -30,8 +37,8 @@ export const practicePoses: PracticePose[] = [
       "Porta lentamente il busto in avanti, appoggiandolo dove è comodo.",
       "Rilassa braccia e spalle e mantieni un respiro naturale.",
     ],
-    cover: "/media/practice/balasana.jpg",
-    videoSrc: null, // Inserisci qui il percorso del video locale.
+    cover: bambino,
+    videoSrc: null,
   },
   {
     id: "adho-mukha-svanasana",
@@ -43,8 +50,8 @@ export const practicePoses: PracticePose[] = [
       "Punta i piedi a terra, solleva il bacino verso l'alto e spingi leggermente il petto verso le cosce.",
       "Mantieni un leggero micro-piegamento alle ginocchia se serve e accompagna il movimento con respiri profondi.",
     ],
-    cover: "/media/practice/adho-mukha-svanasana.jpg",
-    videoSrc: null, // Inserisci qui il percorso del video locale.
+    cover: caneATestaInGiu,
+    videoSrc: null,
   },
   {
     id: "virabhadrasana-ii",
@@ -55,20 +62,21 @@ export const practicePoses: PracticePose[] = [
       "Piega il ginocchio in direzione del piede, senza forzare l'ampiezza.",
       "Apri le braccia all'altezza delle spalle e mantieni il busto comodo.",
     ],
-    cover: "/media/practice/virabhadrasana-ii.jpg",
-    videoSrc: null, // Inserisci qui il percorso del video locale.
+    cover: guerriero,
+    videoSrc: null,
   },
   {
     id: "vrksasana",
     title: "Vrksasana · Posizione dell'albero",
-    description: "Un esercizio di equilibrio da adattare alle proprie possibilità.",
+    description:
+      "Un esercizio di equilibrio da adattare alle proprie possibilità.",
     instructions: [
       "Radicati su un piede mantenendo lo sguardo su un punto stabile.",
       "Appoggia l'altro piede alla caviglia o al polpaccio, mai sul ginocchio.",
       "Unisci le mani o tienile aperte per aiutarti a mantenere l'equilibrio.",
     ],
-    cover: "/media/practice/vrksasana.jpg",
-    videoSrc: null, // Inserisci qui il percorso del video locale.
+    cover: albero,
+    videoSrc: null,
   },
   {
     id: "savasana",
@@ -79,7 +87,7 @@ export const practicePoses: PracticePose[] = [
       "Lascia le gambe distese e le braccia rilassate lungo il corpo.",
       "Ammorbidisci il respiro e resta nella posizione per qualche istante.",
     ],
-    cover: "/media/practice/savasana.jpg",
-    videoSrc: null, // Inserisci qui il percorso del video locale.
+    cover: rilassamento,
+    videoSrc: null,
   },
 ];

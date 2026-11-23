@@ -34,7 +34,7 @@ const Cover = styled.div`
   position: relative;
   display: grid;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   place-items: center;
   color: ${theme.colors.testoSecondary};
@@ -48,6 +48,7 @@ const CoverImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 `;
 
 const CardContent = styled.div`
@@ -55,7 +56,7 @@ const CardContent = styled.div`
   flex: 1;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1rem 1.1rem 1.2rem;
+  padding: 1.5rem 1.1rem 1.2rem;
 
   h2 {
     font-size: 1.15rem;
@@ -77,7 +78,6 @@ export function PracticeCard({ pose, onSelect }: PracticeCardProps) {
   return (
     <CardButton type="button" onClick={() => onSelect(pose)}>
       <Cover>
-        Copertina locale da aggiungere
         <CoverImage
           src={pose.cover}
           alt={`Copertina: ${pose.title}`}

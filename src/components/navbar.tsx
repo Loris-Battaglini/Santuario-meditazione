@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 import { theme } from "../style/theme";
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+import { MdTempleBuddhist } from "react-icons/md";
 
 // prendo nav con lettera maiuscola iniziale grazie a styled-components, così posso usare Nav come componente React e non come tag HTML.
 const Nav = styled.nav`
@@ -73,6 +74,13 @@ const VolumeSlider = styled.input`
   cursor: pointer;
 `;
 
+const BrandIcon = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: ${theme.colors.accent};
+`;
+
 interface NavbarProps {
   masterVolume: number;
   isMuted: boolean;
@@ -88,9 +96,9 @@ export function Navbar({
 }: NavbarProps) {
   return (
     <Header>
-      <div>
-        <img src="/logo.png" alt="Logo" />
-      </div>
+      <BrandIcon aria-label="Santuario meditazione">
+        <MdTempleBuddhist size={38} aria-hidden="true" />
+      </BrandIcon>
       <Nav>
         <NavItem to="/">Home</NavItem>
         <NavItem to="/practice">Practice</NavItem>

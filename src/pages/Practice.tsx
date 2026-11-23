@@ -6,7 +6,7 @@ import { practicePoses, type PracticePose } from "../data/practices";
 import { theme } from "../style/theme";
 
 const Page = styled.main`
-  width: min(100% - 3rem, 72rem);
+  width: min(100% - 3rem, 78rem);
   margin: 0 auto;
   padding: 3rem 0;
 `;
