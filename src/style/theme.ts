@@ -8,6 +8,7 @@ export const theme = {
     text: "#f3ece4", // testo avorio caldo
     testoSecondary: "#a89888", // testo ambra
     accent: "#ffbf00", // ambra
+    iconaETimer: "#d6b879",
   },
   fonts: {
     primary: "Lora, serif", //headings e titoli

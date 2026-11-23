@@ -56,7 +56,7 @@ const Display = styled.div`
   line-height: 1.2;
   letter-spacing: 0.06em;
   font-variant-numeric: tabular-nums;
-  color: #d6b879;
+  color: ${theme.colors.iconaETimer};
 `;
 
 const Controls = styled.div`

@@ -78,7 +78,7 @@ const BrandIcon = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: ${theme.colors.accent};
+  color: ${theme.colors.iconaETimer};
 `;
 
 interface NavbarProps {
