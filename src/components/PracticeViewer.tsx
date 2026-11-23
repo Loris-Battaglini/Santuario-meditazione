@@ -82,6 +82,7 @@ const VideoOverlay = styled.button`
   color: ${theme.colors.text};
   background-color: transparent;
   border: 0;
+  pointer-events: none;
   place-items: center;
 
   &:hover,
@@ -98,6 +99,7 @@ const PlayCircle = styled.span`
   background-color: rgba(0, 0, 0, 0.72);
   border: 2px solid ${theme.colors.accent};
   border-radius: 50%;
+  pointer-events: auto;
   place-items: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 
@@ -169,7 +171,7 @@ export function PracticeViewer({ pose, onClose }: PracticeViewerProps) {
             <>
               <Video
                 ref={videoRef}
-                controls={isPlaying}
+                controls
                 playsInline
                 poster={pose.cover}
                 onPause={() => setIsPlaying(false)}
