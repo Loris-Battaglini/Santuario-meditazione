@@ -6,15 +6,57 @@ const TimerBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
+  gap: 1.25rem;
+  width: min(100%, 22rem);
+  padding: 1.75rem;
+  background-color: ${theme.colors.secondary};
   border: 1px solid ${theme.colors.border};
-  border-radius: 12px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: ${theme.colors.testoSecondary};
+  }
+
+  input {
+    width: 4.5rem;
+    padding: 0.4rem 0.5rem;
+    color: ${theme.colors.text};
+    text-align: center;
+    background-color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.border};
+    border-radius: 6px;
+    font: inherit;
+  }
+
+  button {
+    padding: 0.55rem 1rem;
+    color: ${theme.colors.text};
+    background-color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.border};
+    border-radius: 6px;
+    transition:
+      border-color 150ms ease,
+      color 150ms ease;
+
+    &:hover {
+      color: ${theme.colors.accent};
+      border-color: ${theme.colors.accent};
+    }
+  }
 `;
 
 const Display = styled.div`
   font-family: ${theme.fonts.primary};
-  font-size: 2.5rem;
+  font-size: clamp(2.5rem, 8vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  color: #d6b879;
 `;
 
 const Controls = styled.div`

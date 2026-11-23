@@ -7,17 +7,42 @@ import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 const Nav = styled.nav`
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 0.5rem;
+`;
+
+const NavItem = styled(NavLink)`
+  padding: 0.5rem 0.75rem;
+  color: ${theme.colors.testoSecondary};
+  text-decoration: none;
+  border-radius: 999px;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease;
+
+  &:hover {
+    color: ${theme.colors.text};
+    background-color: ${theme.colors.secondary};
+  }
+
+  &.active {
+    color: ${theme.colors.accent};
+    background-color: ${theme.colors.secondary};
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${theme.colors.accent};
+    outline-offset: 2px;
+  }
 `;
 
 const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 4vw, 2.5rem);
   background-color: ${theme.colors.primary};
   border-bottom: 1px solid ${theme.colors.border};
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const VolumeBox = styled.div`
@@ -50,9 +75,9 @@ export function Navbar({
         <img src="/logo.png" alt="Logo" />
       </div>
       <Nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/practice">Practice</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavItem to="/">Home</NavItem>
+        <NavItem to="/practice">Practice</NavItem>
+        <NavItem to="/contact">Contact</NavItem>
       </Nav>
       <VolumeBox>
         <button

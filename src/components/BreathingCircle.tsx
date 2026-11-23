@@ -23,7 +23,7 @@ const Box = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 3.5rem 2rem 2rem;
 `;
 
 const Circle = styled.div`
