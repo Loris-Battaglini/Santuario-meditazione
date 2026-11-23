@@ -8,6 +8,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+  justify-self: center;
 `;
 
 const NavItem = styled(NavLink)`
@@ -36,8 +37,8 @@ const NavItem = styled(NavLink)`
 `;
 
 const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 1rem;
   padding: 1rem clamp(1rem, 4vw, 2.5rem);
@@ -48,6 +49,7 @@ const Header = styled.header`
 const VolumeBox = styled.div`
   display: flex;
   align-items: center;
+  justify-self: end;
   gap: 0.5rem;
 `;
 
