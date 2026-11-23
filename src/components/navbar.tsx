@@ -9,6 +9,11 @@ const Nav = styled.nav`
   justify-content: center;
   gap: 0.5rem;
   justify-self: center;
+
+  @media (max-width: 640px) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
 `;
 
 const NavItem = styled(NavLink)`
@@ -44,6 +49,11 @@ const Header = styled.header`
   padding: 1rem clamp(1rem, 4vw, 2.5rem);
   background-color: ${theme.colors.primary};
   border-bottom: 1px solid ${theme.colors.border};
+
+  @media (max-width: 640px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    row-gap: 0.75rem;
+  }
 `;
 
 const VolumeBox = styled.div`
@@ -51,6 +61,11 @@ const VolumeBox = styled.div`
   align-items: center;
   justify-self: end;
   gap: 0.5rem;
+
+  @media (max-width: 640px) {
+    grid-column: 2;
+    grid-row: 1;
+  }
 `;
 
 const VolumeSlider = styled.input`

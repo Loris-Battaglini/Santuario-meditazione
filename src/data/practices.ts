@@ -34,6 +34,19 @@ export const practicePoses: PracticePose[] = [
     videoSrc: null, // Inserisci qui il percorso del video locale.
   },
   {
+    id: "adho-mukha-svanasana",
+    title: "Adho Mukha Svanasana · Cane a testa in giù",
+    description:
+      "Un allungamento attivo e rigenerante per sciogliere la schiena e risvegliare il corpo.",
+    instructions: [
+      "Parti in quadrupedia con i polsi sotto le spalle e le ginocchia allineate alle anche.",
+      "Punta i piedi a terra, solleva il bacino verso l'alto e spingi leggermente il petto verso le cosce.",
+      "Mantieni un leggero micro-piegamento alle ginocchia se serve e accompagna il movimento con respiri profondi.",
+    ],
+    cover: "/media/practice/adho-mukha-svanasana.jpg",
+    videoSrc: null, // Inserisci qui il percorso del video locale.
+  },
+  {
     id: "virabhadrasana-ii",
     title: "Virabhadrasana II · Guerriero II",
     description: "Una posizione ampia per esplorare equilibrio e radicamento.",
