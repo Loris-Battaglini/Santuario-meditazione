@@ -9,6 +9,8 @@ const Nav = styled.nav`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+  grid-column: 2;
+  grid-row: 1;
   justify-self: center;
 
   @media (max-width: 640px) {
@@ -57,15 +59,29 @@ const Header = styled.header`
   }
 `;
 
+const HeaderTop = styled.div`
+  display: contents;
+
+  @media (max-width: 640px) {
+    display: flex;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+`;
+
 const VolumeBox = styled.div`
   display: flex;
   align-items: center;
+  grid-column: 3;
+  grid-row: 1;
   justify-self: end;
   gap: 0.5rem;
 
   @media (max-width: 640px) {
-    grid-column: 2;
-    grid-row: 1;
+    justify-self: auto;
   }
 `;
 
@@ -77,7 +93,9 @@ const VolumeSlider = styled.input`
 const BrandIcon = styled.div`
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  grid-column: 1;
+  grid-row: 1;
   color: ${theme.colors.iconaETimer};
 `;
 
@@ -96,31 +114,33 @@ export function Navbar({
 }: NavbarProps) {
   return (
     <Header>
-      <BrandIcon aria-label="Santuario meditazione">
-        <MdTempleBuddhist size={38} aria-hidden="true" />
-      </BrandIcon>
+      <HeaderTop>
+        <BrandIcon aria-label="Santuario meditazione">
+          <MdTempleBuddhist size={38} aria-hidden="true" />
+        </BrandIcon>
+        <VolumeBox>
+          <button
+            type="button"
+            onClick={onToggleMute}
+            aria-label={isMuted ? "Riattiva audio" : "Silenzia tutto"}
+          >
+            {isMuted ? <FaVolumeMute size={18} /> : <FaVolumeUp size={18} />}
+          </button>
+          <VolumeSlider
+            type="range"
+            min={0}
+            max={1}
+            step={0.01}
+            value={isMuted ? 0 : masterVolume}
+            onChange={(e) => onChangeVolume(Number(e.target.value))}
+          />
+        </VolumeBox>
+      </HeaderTop>
       <Nav>
         <NavItem to="/">Home</NavItem>
         <NavItem to="/practice">Practice</NavItem>
         <NavItem to="/contact">Contact</NavItem>
       </Nav>
-      <VolumeBox>
-        <button
-          type="button"
-          onClick={onToggleMute}
-          aria-label={isMuted ? "Riattiva audio" : "Silenzia tutto"}
-        >
-          {isMuted ? <FaVolumeMute size={18} /> : <FaVolumeUp size={18} />}
-        </button>
-        <VolumeSlider
-          type="range"
-          min={0}
-          max={1}
-          step={0.01}
-          value={isMuted ? 0 : masterVolume}
-          onChange={(e) => onChangeVolume(Number(e.target.value))}
-        />
-      </VolumeBox>
     </Header>
   );
 }
