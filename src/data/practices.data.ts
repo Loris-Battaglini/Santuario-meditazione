@@ -26,7 +26,7 @@ export const practicePoses: PracticePose[] = [
       "Lascia le spalle morbide e respira senza forzare.",
     ],
     cover: montagna,
-    videoSrc: null,
+    videoSrc: "https://www.pexels.com/it-it/download/video/4945560/",
   },
   {
     id: "balasana",
@@ -51,7 +51,7 @@ export const practicePoses: PracticePose[] = [
       "Mantieni un leggero micro-piegamento alle ginocchia se serve e accompagna il movimento con respiri profondi.",
     ],
     cover: caneATestaInGiu,
-    videoSrc: null,
+    videoSrc: "https://www.pexels.com/it-it/download/video/8502845/",
   },
   {
     id: "virabhadrasana-ii",
@@ -63,7 +63,7 @@ export const practicePoses: PracticePose[] = [
       "Apri le braccia all'altezza delle spalle e mantieni il busto comodo.",
     ],
     cover: guerriero,
-    videoSrc: null,
+    videoSrc: "https://www.pexels.com/it-it/download/video/6739133/",
   },
   {
     id: "vrksasana",
@@ -76,7 +76,7 @@ export const practicePoses: PracticePose[] = [
       "Unisci le mani o tienile aperte per aiutarti a mantenere l'equilibrio.",
     ],
     cover: albero,
-    videoSrc: null,
+    videoSrc: "https://www.pexels.com/it-it/download/video/8939349/",
   },
   {
     id: "savasana",
@@ -88,6 +88,6 @@ export const practicePoses: PracticePose[] = [
       "Ammorbidisci il respiro e resta nella posizione per qualche istante.",
     ],
     cover: rilassamento,
-    videoSrc: null,
+    videoSrc: "https://www.pexels.com/it-it/download/video/4106469/",
   },
 ];
