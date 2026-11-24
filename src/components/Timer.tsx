@@ -111,7 +111,7 @@ export function Timer() {
   return (
     <TimerBox>
       <label>
-        Minuti:{" "}
+        Durata (minuti):{" "}
         <input
           type="number"
           min={1}
@@ -126,10 +126,10 @@ export function Timer() {
 
       <Controls>
         <button type="button" onClick={() => setIsRunning((prev) => !prev)}>
-          {isRunning ? "Pausa" : "Start"}
+          {isRunning ? "Pausa" : "Avvia"}
         </button>
         <button type="button" onClick={handleReset}>
-          Reset
+          Azzera
         </button>
       </Controls>
     </TimerBox>

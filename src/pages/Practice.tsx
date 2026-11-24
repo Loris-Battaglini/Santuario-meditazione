@@ -64,7 +64,7 @@ export function Practice() {
       <Intro>
         <h1>Pratiche di movimento</h1>
         <p>
-          Scegli una posa per leggere le indicazioni e vedere il video
+          Seleziona una posa per leggerne le indicazioni e vederne il video
           dimostrativo. Procedi con calma e fermati se avverti dolore.
         </p>
       </Intro>

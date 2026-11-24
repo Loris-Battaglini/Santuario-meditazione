@@ -34,18 +34,22 @@ export function Home() {
   return (
     <SanctuaryContainer>
       <Intro>
-        <h1>Welcome to the Sanctuary</h1>
-        <p>Discover peace and tranquility in our sacred space.</p>
+        <h1>Benvenuto al Santuario</h1>
+        <p>
+          Lascia fuori il mondo. Rallenta, respira e ritrova il tuo spazio di
+          quiete.
+        </p>
       </Intro>
       <ContentSection>
+        <h2>Concediti un momento per te</h2>
         <Timer />
       </ContentSection>
       <ContentSection>
-        <h2>rilassati con il tuo audio personalizzato</h2>
+        <h2>Scegli i suoni che accompagnano la tua quiete</h2>
         <SoundMixer />
       </ContentSection>
       <ContentSection>
-        <h2>Pratica la respirazione consapevole</h2>
+        <h2>Ritrova il ritmo del respiro</h2>
         <BreathingCircle />
       </ContentSection>
     </SanctuaryContainer>

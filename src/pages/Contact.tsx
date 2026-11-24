@@ -179,22 +179,11 @@ const Confirmation = styled.p`
 `;
 
 export function Contact() {
-  const [mailtoLink, setMailtoLink] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-    const name = String(formData.get("name"));
-    const email = String(formData.get("email"));
-    const reason = String(formData.get("reason"));
-    const message = String(formData.get("message"));
-    const subject = encodeURIComponent(`Contatto dal sito: ${reason}`);
-    const body = encodeURIComponent(
-      `Nome: ${name}\nEmail: ${email}\nMotivo: ${reason}\n\n${message}`,
-    );
-
-    setMailtoLink(`mailto:${contactEmail}?subject=${subject}&body=${body}`);
+    setSubmitted(true);
   };
 
   return (
@@ -279,12 +268,14 @@ export function Contact() {
             <SubmitButton type="submit">invia il messaggio</SubmitButton>
           </ContactForm>
 
-          {mailtoLink && (
+          {submitted && (
             <Confirmation role="status" aria-live="polite">
-              Il messaggio è pronto. Apri il tuo client email per completare
-              l'invio.
+              Grazie per aver compilato il messaggio. Per ora questo modulo non
+              invia email: puoi contattarmi direttamente a{" "}
+              <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. Intanto,
+              concediti una pausa e goditi un po' di musica rilassante dalla
+              Home.
               <br />
-              <a href={mailtoLink}>Apri il messaggio email</a>
             </Confirmation>
           )}
         </FormPanel>

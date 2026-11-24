@@ -131,15 +131,16 @@ export function Navbar({
             min={0}
             max={1}
             step={0.01}
+            aria-label="Volume generale"
             value={isMuted ? 0 : masterVolume}
             onChange={(e) => onChangeVolume(Number(e.target.value))}
           />
         </VolumeBox>
       </HeaderTop>
       <Nav>
-        <NavItem to="/">Home</NavItem>
-        <NavItem to="/practice">Practice</NavItem>
-        <NavItem to="/contact">Contact</NavItem>
+        <NavItem to="/">Casa</NavItem>
+        <NavItem to="/practice">Esercizi</NavItem>
+        <NavItem to="/contact">Contatti</NavItem>
       </Nav>
     </Header>
   );

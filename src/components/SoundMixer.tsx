@@ -71,55 +71,55 @@ const VolumeSlider = styled.input`
 const SOUNDS = [
   {
     id: "grilli",
-    title: "Notte",
+    title: "Grilli notturni",
     icon: <FaRegMoon />,
     url: grilliMp3,
   },
   {
     id: "pioggiaCitta",
-    title: "Pioggia",
+    title: "Pioggia sulla città",
     icon: <BsCloudRain />,
     url: pioggiaCittaMp3,
   },
   {
     id: "bell",
-    title: "Campana",
+    title: "Ciotola tibetana",
     icon: <FiBell />,
     url: ciotolaMp3,
   },
   {
     id: "wave",
-    title: "Onde",
+    title: "Onde del mare",
     icon: <FiDroplet />,
     url: ondaMp3,
   },
   {
     id: "fire",
-    title: "Fuoco",
+    title: "Crepitio del fuoco",
     icon: <BsFire />,
     url: fuocoMp3,
   },
   {
     id: "forest",
-    title: "Vento Foresta",
+    title: "Vento tra gli alberi",
     icon: <LuTreePine />,
     url: ventoForteForestaAereoMp3,
   },
   {
     id: "quarzo",
-    title: "Quarzo",
+    title: "Cristallo sonoro",
     icon: <GiStoneBlock />,
     url: cristalloDiQuarzoMp3,
   },
   {
     id: "birds",
-    title: "Uccelli",
+    title: "Canto degli uccelli",
     icon: <PiBirdLight />,
     url: uccelliMp3,
   },
   {
     id: "thunder",
-    title: "Tuoni",
+    title: "Temporale",
     icon: <BsCloudLightningRain />,
     url: tuoniPioggiaMp3,
   },
@@ -216,6 +216,7 @@ export function SoundMixer() {
             type="range"
             min="0"
             max="100"
+            aria-label={`Volume: ${sound.title}`}
             value={volumes[sound.id]}
             onChange={(e) =>
               handleVolumeChange(sound.id, parseInt(e.target.value))
