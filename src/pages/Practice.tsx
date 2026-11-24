@@ -4,6 +4,7 @@ import { PracticeCard } from "../components/PracticeCard";
 import { PracticeViewer } from "../components/PracticeViewer";
 import { practicePoses, type PracticePose } from "../data/practices.data";
 import { theme } from "../style/theme";
+import { Timer } from "../components/Timer";
 
 const Page = styled.main`
   width: min(100% - 3rem, 78rem);
@@ -39,6 +40,16 @@ const PracticeGrid = styled.div`
   }
 `;
 
+const ContentSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: min(100%, 600px);
+  margin: 0 auto 2rem;
+  text-align: center;
+`;
+
 export function Practice() {
   const [selectedPose, setSelectedPose] = useState<PracticePose | null>(null);
 
@@ -61,6 +72,11 @@ export function Practice() {
 
   return (
     <Page>
+      <ContentSection>
+        <h2>Concediti un momento per te</h2>
+        <Timer />
+      </ContentSection>
+
       <Intro>
         <h1>Pratiche di movimento</h1>
         <p>
