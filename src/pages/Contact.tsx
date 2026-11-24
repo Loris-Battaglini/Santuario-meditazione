@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import styled from "styled-components";
-import treeArt from "../assets/svg/tree-svgrepo-com.svg";
+import treeArt from "../assets/svg/GoldTree.svg";
 import { theme } from "../style/theme";
 
 const contactEmail = "ciao@santuariomeditazione.it";
@@ -11,6 +11,11 @@ const Page = styled.main`
   width: min(100% - 3rem, 72rem);
   margin: 0 auto;
   padding: clamp(2.5rem, 7vw, 5rem) 0;
+
+  @media (min-width: 48.0625rem) {
+    position: relative;
+    isolation: isolate;
+  }
 `;
 
 const ContactGrid = styled.div`
@@ -87,6 +92,15 @@ const BranchArt = styled.img`
 
   @media (max-width: 47.5rem) {
     width: min(42%, 12rem);
+  }
+
+  @media (min-width: 48.0625rem) {
+    position: fixed;
+    z-index: -1;
+    right: auto;
+    bottom: 0;
+    left: max(1.5rem, calc((100vw - 72rem) / 2));
+    width: min(60vw, 60vh, 80rem);
   }
 `;
 
