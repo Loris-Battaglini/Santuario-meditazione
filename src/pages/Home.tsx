@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { SoundMixer } from "../components/SoundMixer";
 import { BreathingCircle } from "../components/BreathingCircle";
 import GoldTree from "../assets/svg/GoldTree.svg";
+import { theme } from "../style/theme";
 
 const Intro = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ const SanctuaryContainer = styled.main`
   gap: 2rem;
   min-height: calc(100vh - 5rem);
   padding: 1.5rem;
-  background-color: rgba(7, 2, 1, 0.8);
+  background-color: ${theme.colors.background};
   width: 100%;
 
   @media (max-width: 40rem) {

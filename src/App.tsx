@@ -12,6 +12,14 @@ import {
   useLocation,
 } from 'react-router-dom';
 
+const PageContainer = styled.div`
+  width: 100%;
+  max-width: 96rem;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 2vw, 2rem);
+`;
+
 const PersistentHome = styled.div<{ $isHome: boolean }>`
   display: ${({ $isHome }) => ($isHome ? 'contents' : 'none')};
 `;
@@ -39,13 +47,15 @@ function AppContent({
         onChangeVolume={onChangeVolume}
         onToggleMute={onToggleMute}
       />
-      <PersistentHome $isHome={pathname === '/'}>
-        <Home />
-      </PersistentHome>
-      <Routes>
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/practice" element={<Practice />} />
-      </Routes>
+      <PageContainer>
+        <PersistentHome $isHome={pathname === '/'}>
+          <Home />
+        </PersistentHome>
+        <Routes>
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/practice" element={<Practice />} />
+        </Routes>
+      </PageContainer>
     </>
   );
 }

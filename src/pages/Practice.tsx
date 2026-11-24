@@ -7,7 +7,7 @@ import { theme } from "../style/theme";
 import { Timer } from "../components/Timer";
 
 const Page = styled.main`
-  width: min(100% - 3rem, 78rem);
+  width: min(100%, 78rem);
   margin: 0 auto;
   padding: 3rem 0;
 `;

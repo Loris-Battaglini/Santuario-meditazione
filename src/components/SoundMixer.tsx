@@ -56,7 +56,7 @@ const SoundCard = styled.div`
   padding: 1rem;
   border: 0.0625rem solid ${theme.colors.border};
   border-radius: 0.75rem;
-  background-color: ${theme.colors.background};
+  background-color: ${theme.colors.secondary};
 
   @media (min-width: 120rem) {
     padding: clamp(1.1rem, 1.1vw, 1.75rem);

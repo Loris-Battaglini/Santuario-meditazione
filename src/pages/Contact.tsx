@@ -8,7 +8,7 @@ const instagramUrl = "https://www.instagram.com/";
 const youtubeUrl = "https://www.youtube.com/";
 
 const Page = styled.main`
-  width: min(100% - 3rem, 72rem);
+  width: min(100%, 72rem);
   margin: 0 auto;
   padding: clamp(2.5rem, 7vw, 5rem) 0;
 

@@ -2,9 +2,13 @@ import { theme } from "./theme.ts";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+  html {
+    font-size: 95%;
+  }
+
   @media (min-width: 120rem) {
     html {
-      font-size: clamp(1rem, 0.85vw, 1.375rem);
+      font-size: clamp(0.95rem, 0.8vw, 1.3rem);
     }
   }
 
