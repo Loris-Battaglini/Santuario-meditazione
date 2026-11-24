@@ -1,75 +1,72 @@
-# React + TypeScript + Vite
+<div align="center">
+  <h1>🌿 Santuario</h1>
+  <p><strong>Lascia fuori il mondo. Ascolta, rallenta e ritrova il ritmo del respiro.</strong></p>
+  <p>Uno spazio digitale dedicato alla meditazione, al respiro e al movimento consapevole.</p>
+  <p><code>React</code> · <code>TypeScript</code> · <code>Vite</code> · <code>styled-components</code></p>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Un luogo per ritrovare la calma
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Santuario** raccoglie in un'unica esperienza strumenti semplici per concedersi una pausa: suoni rilassanti, esercizi di respirazione e pratiche di movimento accompagnate da indicazioni e video.
 
-## React Compiler
+## Anteprima
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<table>
+  <thead>
+    <tr>
+      <th align="center">Casa</th>
+      <th align="center">Esercizi</th>
+      <th align="center">Contatti</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">
+        <a href="src/assets/img/readme/casa.png">
+          <img src="src/assets/img/readme/casa.png" alt="Schermata della Home con il mixer dei suoni" width="100%" />
+        </a>
+      </td>
+      <td align="center">
+        <a href="src/assets/img/readme/esercizi.png">
+          <img src="src/assets/img/readme/esercizi.png" alt="Schermata degli esercizi con timer e pratiche" width="100%" />
+        </a>
+      </td>
+      <td align="center">
+        <a href="src/assets/img/readme/contatti.png">
+          <img src="src/assets/img/readme/contatti.png" alt="Schermata della pagina Contatti" width="100%" />
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-## Expanding the ESLint configuration
+## Cosa puoi fare
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Rallentare il respiro** con un esercizio visivo guidato.
+- **Creare la tua atmosfera** combinando i suoni del mixer e regolando il volume.
+- **Prenderti un momento per te** con il timer e le pratiche di movimento, complete di istruzioni e video.
+- **Trovare i riferimenti per contattarmi** dalla pagina dedicata.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+> Il modulo Contatti è solo front-end: dopo l'invio mostra l'indirizzo email per scrivere direttamente.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tecnologie
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+React · TypeScript · Vite · styled-components · React Router · React Icons
 
+## Avvio in locale
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Per creare e visualizzare la build di produzione:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run build
+npm run preview
 ```
+
+La build viene generata in `dist/`. La configurazione include il percorso base per GitHub Pages del repository e crea `dist/404.html` per supportare le rotte dell'app.
