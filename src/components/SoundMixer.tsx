@@ -41,7 +41,7 @@ const SoundCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 1rem;
   border: 1px solid ${theme.colors.border};
   border-radius: 12px;
@@ -49,17 +49,26 @@ const SoundCard = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  font-size: 2rem;
-  align-items: center;
   display: flex;
+  flex-shrink: 0;
+  align-items: center;
   justify-content: center;
+  height: 2rem;
+  font-size: 2rem;
 `;
 
 const TitleWrapper = styled.div`
+  display: grid;
+  width: 100%;
+  height: 2.4em;
+  flex-shrink: 0;
+  place-items: center;
   font-family: ${theme.fonts.primary};
   font-size: 1rem;
   margin-top: 0.5rem;
   font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
 `;
 
 const VolumeSlider = styled.input`
@@ -77,13 +86,13 @@ const SOUNDS = [
   },
   {
     id: "pioggiaCitta",
-    title: "Pioggia sulla città",
+    title: "Pioggia",
     icon: <BsCloudRain />,
     url: pioggiaCittaMp3,
   },
   {
     id: "bell",
-    title: "Ciotola tibetana",
+    title: "Ciotola Tibetana",
     icon: <FiBell />,
     url: ciotolaMp3,
   },
@@ -107,7 +116,7 @@ const SOUNDS = [
   },
   {
     id: "quarzo",
-    title: "Cristallo sonoro",
+    title: "Cristallo di Quarzo",
     icon: <GiStoneBlock />,
     url: cristalloDiQuarzoMp3,
   },
@@ -151,15 +160,16 @@ export function SoundMixer() {
 
       Object.entries(audioElementsRef.current).forEach(([soundId, audio]) => {
         const soundVolume = (volumesRef.current[soundId] ?? 0) / 100;
-        audio.volume =
-          soundVolume *
-          (detail.isMuted ? 0 : detail.masterVolume);
+        audio.volume = soundVolume * (detail.isMuted ? 0 : detail.masterVolume);
       });
     };
 
     window.addEventListener("master-audio-change", handleMasterAudioChange);
     return () =>
-      window.removeEventListener("master-audio-change", handleMasterAudioChange);
+      window.removeEventListener(
+        "master-audio-change",
+        handleMasterAudioChange,
+      );
   }, []);
 
   useEffect(() => {
@@ -169,7 +179,7 @@ export function SoundMixer() {
       const audio = new Audio(sound.url);
       audio.loop = true;
       audio.volume =
-        (volumesRef.current[sound.id] ?? 0) / 100 *
+        ((volumesRef.current[sound.id] ?? 0) / 100) *
         (masterAudioSettingsRef.current.isMuted
           ? 0
           : masterAudioSettingsRef.current.masterVolume);
