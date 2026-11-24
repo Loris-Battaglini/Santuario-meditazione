@@ -23,9 +23,9 @@ const Dialog = styled.div`
   padding: clamp(1.25rem, 4vw, 2rem);
   color: ${theme.colors.text};
   background-color: ${theme.colors.primary};
-  border: 1px solid ${theme.colors.border};
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  border: 0.0625rem solid ${theme.colors.border};
+  border-radius: 1rem;
+  box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.45);
 
   h2 {
     padding-right: 5rem;
@@ -41,8 +41,8 @@ const CloseButton = styled.button`
   padding: 0.45rem 0.75rem;
   color: ${theme.colors.text};
   background-color: ${theme.colors.secondary};
-  border: 1px solid ${theme.colors.border};
-  border-radius: 8px;
+  border: 0.0625rem solid ${theme.colors.border};
+  border-radius: 0.5rem;
 
   &:hover,
   &:focus-visible {
@@ -58,7 +58,7 @@ const MediaFrame = styled.div`
   overflow: hidden;
   color: ${theme.colors.testoSecondary};
   background-color: ${theme.colors.secondary};
-  border-radius: 10px;
+  border-radius: 0.625rem;
   place-items: center;
   text-align: center;
 `;
@@ -87,8 +87,8 @@ const VideoOverlay = styled.button`
 
   &:hover,
   &:focus-visible {
-    outline: 2px solid ${theme.colors.accent};
-    outline-offset: -2px;
+    outline: 0.125rem solid ${theme.colors.accent};
+    outline-offset: -0.125rem;
   }
 `;
 
@@ -97,11 +97,16 @@ const PlayCircle = styled.span`
   width: 4.5rem;
   height: 4.5rem;
   background-color: rgba(0, 0, 0, 0.72);
-  border: 2px solid ${theme.colors.accent};
+  border: 0.125rem solid ${theme.colors.accent};
   border-radius: 50%;
   pointer-events: auto;
   place-items: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35);
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 
   ${VideoOverlay}:hover &,
   ${VideoOverlay}:focus-visible & {
@@ -187,7 +192,7 @@ export function PracticeViewer({ pose, onClose }: PracticeViewerProps) {
                   onClick={startVideo}
                 >
                   <PlayCircle>
-                    <FaPlay size={24} aria-hidden="true" />
+                    <FaPlay aria-hidden="true" />
                   </PlayCircle>
                 </VideoOverlay>
               )}

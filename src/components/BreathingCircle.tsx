@@ -27,8 +27,8 @@ const Box = styled.div`
 `;
 
 const Circle = styled.div`
-  width: 110px;
-  height: 110px;
+  width: 6.875rem;
+  height: 6.875rem;
   border-radius: 50%;
   background-color: ${theme.colors.primary};
   display: flex;

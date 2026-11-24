@@ -19,7 +19,7 @@ const ContactGrid = styled.div`
   align-items: start;
   gap: clamp(2rem, 7vw, 6rem);
 
-  @media (max-width: 760px) {
+  @media (max-width: 47.5rem) {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
@@ -85,7 +85,7 @@ const BranchArt = styled.img`
   opacity: 0.28;
   pointer-events: none;
 
-  @media (max-width: 760px) {
+  @media (max-width: 47.5rem) {
     width: min(42%, 12rem);
   }
 `;
@@ -93,8 +93,8 @@ const BranchArt = styled.img`
 const FormPanel = styled.section`
   padding: clamp(1.25rem, 4vw, 2rem);
   background-color: ${theme.colors.secondary};
-  border: 1px solid ${theme.colors.border};
-  border-radius: 14px;
+  border: 0.0625rem solid ${theme.colors.border};
+  border-radius: 0.875rem;
 
   h2 {
     margin-bottom: 1.5rem;
@@ -123,13 +123,13 @@ const Field = styled.div`
     color: ${theme.colors.text};
     font: inherit;
     background-color: ${theme.colors.primary};
-    border: 1px solid ${theme.colors.border};
-    border-radius: 8px;
+    border: 0.0625rem solid ${theme.colors.border};
+    border-radius: 0.5rem;
 
     &:focus-visible {
       border-color: ${theme.colors.accent};
-      outline: 2px solid ${theme.colors.accent};
-      outline-offset: 2px;
+      outline: 0.125rem solid ${theme.colors.accent};
+      outline-offset: 0.125rem;
     }
   }
 
@@ -150,15 +150,15 @@ const SubmitButton = styled.button`
   font: inherit;
   font-weight: 600;
   background-color: ${theme.colors.iconaETimer};
-  border: 1px solid ${theme.colors.accent};
-  border-radius: 8px;
+  border: 0.0625rem solid ${theme.colors.accent};
+  border-radius: 0.5rem;
 
   &:hover,
   &:focus-visible {
     background-color: transparent;
     color: ${theme.colors.accent};
-    outline: 2px solid ${theme.colors.accent};
-    outline-offset: 2px;
+    outline: 0.125rem solid ${theme.colors.accent};
+    outline-offset: 0.125rem;
   }
 `;
 
@@ -167,8 +167,8 @@ const Confirmation = styled.p`
   padding: 0.9rem 1rem;
   color: ${theme.colors.text};
   background-color: ${theme.colors.primary};
-  border: 1px solid ${theme.colors.accent};
-  border-radius: 8px;
+  border: 0.0625rem solid ${theme.colors.accent};
+  border-radius: 0.5rem;
 
   a {
     display: inline-block;

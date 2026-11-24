@@ -13,7 +13,7 @@ const Nav = styled.nav`
   grid-row: 1;
   justify-self: center;
 
-  @media (max-width: 640px) {
+  @media (max-width: 40rem) {
     grid-column: 1 / -1;
     grid-row: 2;
   }
@@ -23,7 +23,7 @@ const NavItem = styled(NavLink)`
   padding: 0.5rem 0.75rem;
   color: ${theme.colors.testoSecondary};
   text-decoration: none;
-  border-radius: 999px;
+  border-radius: 999rem;
   transition:
     color 150ms ease,
     background-color 150ms ease;
@@ -39,21 +39,23 @@ const NavItem = styled(NavLink)`
   }
 
   &:focus-visible {
-    outline: 2px solid ${theme.colors.accent};
-    outline-offset: 2px;
+    outline: 0.125rem solid ${theme.colors.accent};
+    outline-offset: 0.125rem;
   }
 `;
 
 const Header = styled.header`
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 1rem;
   padding: 1rem clamp(1rem, 4vw, 2.5rem);
   background-color: ${theme.colors.primary};
-  border-bottom: 1px solid ${theme.colors.border};
+  border-bottom: 0.0625rem solid ${theme.colors.border};
 
-  @media (max-width: 640px) {
+  @media (max-width: 40rem) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     row-gap: 0.75rem;
   }
@@ -62,7 +64,7 @@ const Header = styled.header`
 const HeaderTop = styled.div`
   display: contents;
 
-  @media (max-width: 640px) {
+  @media (max-width: 40rem) {
     display: flex;
     grid-column: 1 / -1;
     grid-row: 1;
@@ -80,14 +82,30 @@ const VolumeBox = styled.div`
   justify-self: end;
   gap: 0.5rem;
 
-  @media (max-width: 640px) {
+  @media (max-width: 40rem) {
     justify-self: auto;
+  }
+
+  @media (min-width: 120rem) {
+    button svg {
+      width: clamp(1.125rem, 1vw, 1.625rem);
+      height: clamp(1.125rem, 1vw, 1.625rem);
+    }
+  }
+
+  button svg {
+    width: 1.125rem;
+    height: 1.125rem;
   }
 `;
 
 const VolumeSlider = styled.input`
-  width: 90px;
+  width: 5.625rem;
   cursor: pointer;
+
+  @media (min-width: 120rem) {
+    width: clamp(5.625rem, 7vw, 11.25rem);
+  }
 `;
 
 const BrandIcon = styled.div`
@@ -97,6 +115,18 @@ const BrandIcon = styled.div`
   grid-column: 1;
   grid-row: 1;
   color: ${theme.colors.iconaETimer};
+
+  svg {
+    width: 2.375rem;
+    height: 2.375rem;
+  }
+
+  @media (min-width: 120rem) {
+    svg {
+      width: clamp(2.375rem, 2.4vw, 3.875rem);
+      height: clamp(2.375rem, 2.4vw, 3.875rem);
+    }
+  }
 `;
 
 interface NavbarProps {
@@ -116,7 +146,7 @@ export function Navbar({
     <Header>
       <HeaderTop>
         <BrandIcon aria-label="Santuario meditazione">
-          <MdTempleBuddhist size={38} aria-hidden="true" />
+          <MdTempleBuddhist aria-hidden="true" />
         </BrandIcon>
         <VolumeBox>
           <button
@@ -124,7 +154,7 @@ export function Navbar({
             onClick={onToggleMute}
             aria-label={isMuted ? "Riattiva audio" : "Silenzia tutto"}
           >
-            {isMuted ? <FaVolumeMute size={18} /> : <FaVolumeUp size={18} />}
+            {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
           </button>
           <VolumeSlider
             type="range"

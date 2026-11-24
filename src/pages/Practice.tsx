@@ -31,11 +31,11 @@ const PracticeGrid = styled.div`
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
 
-  @media (max-width: 800px) {
+  @media (max-width: 50rem) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  @media (max-width: 540px) {
+  @media (max-width: 33.75rem) {
     grid-template-columns: 1fr;
   }
 `;
@@ -45,7 +45,7 @@ const ContentSection = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  width: min(100%, 600px);
+  width: min(100%, 37.5rem);
   margin: 0 auto 2rem;
   text-align: center;
 `;

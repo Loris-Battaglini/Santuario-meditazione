@@ -10,9 +10,9 @@ const TimerBox = styled.div`
   width: min(100%, 22rem);
   padding: 1.75rem;
   background-color: ${theme.colors.secondary};
-  border: 1px solid ${theme.colors.border};
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border: 0.0625rem solid ${theme.colors.border};
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
 
   label {
     display: flex;
@@ -27,8 +27,8 @@ const TimerBox = styled.div`
     color: ${theme.colors.text};
     text-align: center;
     background-color: ${theme.colors.primary};
-    border: 1px solid ${theme.colors.border};
-    border-radius: 6px;
+    border: 0.0625rem solid ${theme.colors.border};
+    border-radius: 0.375rem;
     font: inherit;
   }
 
@@ -36,8 +36,8 @@ const TimerBox = styled.div`
     padding: 0.55rem 1rem;
     color: ${theme.colors.text};
     background-color: ${theme.colors.primary};
-    border: 1px solid ${theme.colors.border};
-    border-radius: 6px;
+    border: 0.0625rem solid ${theme.colors.border};
+    border-radius: 0.375rem;
     transition:
       border-color 150ms ease,
       color 150ms ease;

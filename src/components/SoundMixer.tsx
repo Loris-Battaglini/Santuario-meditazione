@@ -31,10 +31,20 @@ declare global {
 
 const MixerContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   width: 100%;
-  max-width: 600px;
+  max-width: 37.5rem;
+
+  @media (max-width: 40rem) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 120rem) {
+    max-width: min(39vw, 62.5rem);
+    gap: clamp(1rem, 1.5vw, 2rem);
+  }
 `;
 
 const SoundCard = styled.div`
@@ -42,10 +52,15 @@ const SoundCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  min-width: 0;
   padding: 1rem;
-  border: 1px solid ${theme.colors.border};
-  border-radius: 12px;
+  border: 0.0625rem solid ${theme.colors.border};
+  border-radius: 0.75rem;
   background-color: ${theme.colors.background};
+
+  @media (min-width: 120rem) {
+    padding: clamp(1.1rem, 1.1vw, 1.75rem);
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -55,6 +70,11 @@ const IconWrapper = styled.div`
   justify-content: center;
   height: 2rem;
   font-size: 2rem;
+
+  @media (min-width: 120rem) {
+    height: clamp(2rem, 2.5vw, 3rem);
+    font-size: clamp(2rem, 2vw, 2.75rem);
+  }
 `;
 
 const TitleWrapper = styled.div`
@@ -69,6 +89,10 @@ const TitleWrapper = styled.div`
   font-weight: bold;
   line-height: 1.2;
   text-align: center;
+
+  @media (min-width: 120rem) {
+    font-size: clamp(1rem, 0.85vw, 1.25rem);
+  }
 `;
 
 const VolumeSlider = styled.input`

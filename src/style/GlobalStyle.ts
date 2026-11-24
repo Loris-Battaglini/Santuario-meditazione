@@ -2,6 +2,12 @@ import { theme } from "./theme.ts";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+  @media (min-width: 120rem) {
+    html {
+      font-size: clamp(1rem, 0.85vw, 1.375rem);
+    }
+  }
+
   * {
     box-sizing: border-box;
     margin: 0;

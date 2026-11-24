@@ -10,8 +10,8 @@ const CardButton = styled.button`
   color: ${theme.colors.text};
   text-align: left;
   background-color: ${theme.colors.secondary};
-  border: 1px solid ${theme.colors.border};
-  border-radius: 14px;
+  border: 0.0625rem solid ${theme.colors.border};
+  border-radius: 0.875rem;
   cursor: pointer;
   transition:
     transform 160ms ease,
@@ -19,14 +19,14 @@ const CardButton = styled.button`
     box-shadow 160ms ease;
 
   &:hover {
-    transform: translateY(-3px);
+    transform: translateY(-0.1875rem);
     border-color: ${theme.colors.accent};
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.22);
   }
 
   &:focus-visible {
-    outline: 2px solid ${theme.colors.accent};
-    outline-offset: 3px;
+    outline: 0.125rem solid ${theme.colors.accent};
+    outline-offset: 0.1875rem;
   }
 `;
 
