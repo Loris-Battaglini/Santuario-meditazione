@@ -101,6 +101,13 @@ const VolumeSlider = styled.input`
   cursor: pointer;
 `;
 
+const AudioError = styled.p`
+  grid-column: 1 / -1;
+  color: ${theme.colors.text};
+  font-size: 0.9rem;
+  text-align: center;
+`;
+
 const SOUNDS = [
   {
     id: "grilli",
@@ -175,6 +182,7 @@ export function SoundMixer() {
     birds: 0,
     thunder: 0,
   });
+  const [audioError, setAudioError] = useState<string | null>(null);
   const volumesRef = useRef(volumes);
 
   useEffect(() => {
@@ -200,7 +208,8 @@ export function SoundMixer() {
     const audioElements = audioElementsRef.current;
 
     SOUNDS.forEach((sound) => {
-      const audio = new Audio(sound.url);
+      const audio = new Audio();
+      audio.preload = "none";
       audio.loop = true;
       audio.volume =
         ((volumesRef.current[sound.id] ?? 0) / 100) *
@@ -217,13 +226,18 @@ export function SoundMixer() {
     };
   }, []);
 
-  function handleVolumeChange(soundId: string, value: number) {
+  function handleVolumeChange(
+    sound: (typeof SOUNDS)[number],
+    value: number,
+  ) {
+    const soundId = sound.id;
     const nextVolumes = {
       ...volumesRef.current,
       [soundId]: value,
     };
     volumesRef.current = nextVolumes;
     setVolumes(nextVolumes);
+    setAudioError(null);
 
     const audio = audioElementsRef.current[soundId];
     if (!audio) return;
@@ -235,7 +249,14 @@ export function SoundMixer() {
         : masterAudioSettingsRef.current.masterVolume);
 
     if (value > 0 && audio.paused) {
-      audio.play().catch(() => {});
+      if (!audio.getAttribute("src")) audio.src = sound.url;
+
+      void audio.play().catch((error: unknown) => {
+        console.error(`Unable to play "${sound.title}"`, error);
+        setAudioError(
+          `Impossibile riprodurre "${sound.title}". Controlla la connessione e riprova.`,
+        );
+      });
     } else if (value === 0) {
       audio.pause();
     }
@@ -253,11 +274,12 @@ export function SoundMixer() {
             aria-label={`Volume: ${sound.title}`}
             value={volumes[sound.id]}
             onChange={(e) =>
-              handleVolumeChange(sound.id, parseInt(e.target.value))
+              handleVolumeChange(sound, parseInt(e.target.value, 10))
             }
           />
         </SoundCard>
       ))}
+      {audioError && <AudioError role="status">{audioError}</AudioError>}
     </MixerContainer>
   );
 }

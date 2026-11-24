@@ -75,7 +75,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <AppContent
           masterVolume={masterVolume}
           isMuted={isMuted}

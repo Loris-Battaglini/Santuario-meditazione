@@ -63,6 +63,12 @@ const MediaFrame = styled.div`
   text-align: center;
 `;
 
+const VideoError = styled.p`
+  margin-top: 0.75rem;
+  color: ${theme.colors.testoSecondary};
+  text-align: center;
+`;
+
 const Video = styled.video`
   position: absolute;
   inset: 0;
@@ -147,13 +153,20 @@ interface PracticeViewerProps {
 export function PracticeViewer({ pose, onClose }: PracticeViewerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
-  const startVideo = () => {
+  const startVideo = async () => {
     const video = videoRef.current;
     if (!video) return;
 
-    setIsPlaying(true);
-    void video.play();
+    setVideoError(false);
+    try {
+      await video.play();
+    } catch (error: unknown) {
+      console.error(`Unable to play "${pose.title}"`, error);
+      setIsPlaying(false);
+      setVideoError(true);
+    }
   };
 
   return (
@@ -178,9 +191,17 @@ export function PracticeViewer({ pose, onClose }: PracticeViewerProps) {
                 ref={videoRef}
                 controls
                 playsInline
+                preload="none"
                 poster={pose.cover}
                 onPause={() => setIsPlaying(false)}
-                onPlay={() => setIsPlaying(true)}
+                onPlay={() => {
+                  setIsPlaying(true);
+                  setVideoError(false);
+                }}
+                onError={() => {
+                  setIsPlaying(false);
+                  setVideoError(true);
+                }}
               >
                 <source src={pose.videoSrc} type="video/mp4" />
                 Il browser non supporta la riproduzione video.
@@ -204,6 +225,11 @@ export function PracticeViewer({ pose, onClose }: PracticeViewerProps) {
             </p>
           )}
         </MediaFrame>
+        {pose.videoSrc && videoError && (
+          <VideoError role="status">
+            Video non disponibile. Controlla la connessione e riprova.
+          </VideoError>
+        )}
         <Directions>
           <h3>Indicazioni</h3>
           <p>{pose.description}</p>
