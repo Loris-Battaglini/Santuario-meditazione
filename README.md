@@ -2,6 +2,8 @@
   <h1>🌿 Santuario</h1>
   <p><strong>Lascia fuori il mondo. Ascolta, rallenta e ritrova il ritmo del respiro.</strong></p>
   <p>Uno spazio digitale dedicato alla meditazione, al respiro e al movimento consapevole.</p>
+  <p><a href="https://loris-battaglini.github.io/Santuario-meditazione/"><strong>Visita il sito online →</strong></a></p>
+  <p><sub>Pubblicato su GitHub Pages con GitHub Actions</sub></p>
   <p><code>React</code> · <code>TypeScript</code> · <code>Vite</code> · <code>styled-components</code></p>
 </div>
 
